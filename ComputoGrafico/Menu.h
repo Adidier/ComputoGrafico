@@ -1,9 +1,8 @@
 #pragma once
-#include "CGE/Base/GameState.h"
-#include "CGE/Base/GameStateManager.h"
-#include "CGE/Graphic/Mesh.h"
-#include "CGE/Graphic/Shader.h"
-#include "CGE/Base/ShaderManager.h"
+#include "BCE/GameState.h"
+#include "BCE/GameStateManager.h"
+#include "BCE/Mesh.h"
+#include "BCE/Shader.h"
 #include<vector>
 class Menu : public GameState
 {
@@ -12,15 +11,18 @@ private:
 	GameStateManager* manager;
 
 	std::vector<Mesh*> meshList;
-	ShaderManager* shaderManager;
-	Camera camera;
+	std::vector<Shader> shaderList;
+
+	const char* vShader = "Assets/Shaders/Menu/shader.vert";
+
+	// Fragment Shader
+	const char* fShader = "Assets/Shaders/Menu/shader.frag";
 public:
 	Menu();
 	~Menu();
-	void Init() override;
+	void Init(Platform* platform, GameStateManager* manager) override;
 	void Draw() override;
-	bool Input(std::map<int, bool> keys) override;
-	bool MouseInput(int x, int y, bool leftbutton);
+	bool Input(int keyInput) override;
 	void Update() override;
 	void Close() override;
 	void LoadShaders();

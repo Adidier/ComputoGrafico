@@ -1,10 +1,11 @@
-#include "CGE/Base/GameStateManager.h"
+#include "BCE/GameStateManager.h"
 #include "Menu.h"
 int main(int argc, char* argv[])
 {
-	GameStateManager* manager = GameStateManager::getPtr();
+	GameStateManager* manager = new GameStateManager();
 	manager->SetState(new Menu());
 	manager->GameLoop();
+	delete manager;
 	return 0;
 }
 

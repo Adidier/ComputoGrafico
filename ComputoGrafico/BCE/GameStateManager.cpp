@@ -1,30 +1,18 @@
 #include "GameStateManager.h"
 #include <iostream>
-GameStateManager* GameStateManager::ptr;
 
 GameStateManager::GameStateManager()
 {
-	platform = Platform::GetPtr();
+	platform = new Platform("BlackCable");
 }
 
 GameStateManager::~GameStateManager()
 {
 }
-GameStateManager* GameStateManager::getPtr()
-{
-	if (ptr == nullptr)
-	{
-		ptr = new GameStateManager();
-	}
-	else
-	{
-		return ptr;
-	}
-}
+
 void GameStateManager::GameLoop()
 {
-	//Para que el juego se cierre al poner ESC
-	while (!platform->shouldWindowClose())
+	while (true)
 	{
 		try
 		{
@@ -35,14 +23,14 @@ void GameStateManager::GameLoop()
 			{
 				break;
 			}
-			platform->CheckEvent(state, &GameState::Input, &GameState::MouseInput);
+			platform->CheckEvent(state, &GameState::Input);
 			state->Update();
 			state->Draw();
 
 		}
 		catch (...)
 		{
-			std::cout << "Critical error App is closing";
+			std::cout << "Critical error BlackCable is closing";
 			break;
 		}
 	}
@@ -50,7 +38,7 @@ void GameStateManager::GameLoop()
 
 void GameStateManager::SetState(GameState* state)
 {
-	state->Init();
+	state->Init(platform, this);
 	states.push(state);
 }
 
