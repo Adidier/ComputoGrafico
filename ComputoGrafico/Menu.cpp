@@ -30,7 +30,6 @@ void Menu::Init()
 void Menu::LoadModels()
 {
 	unsigned int indices[] = {
-<<<<<<< HEAD
 	0,1,2,
 	0,3,2
 	};
@@ -42,45 +41,8 @@ void Menu::LoadModels()
 	1.0f, 0.0f, 0.0f
 	};
 
-	Mesh *obj1 = new Mesh();
+	Mesh* obj1 = new Mesh();
 	obj1->CreateMesh(vertices, indices, 12, 6);
-=======
-		0,1,2,
-		0,3,2,
-		3,2,4,
-		4,2,5,
-		5,4,6,
-		6,4,7,
-		6,5,2,
-		6,1,2,
-		6,7,1,
-		7,1,0,
-		0,3,4,
-		0,3,7
-		/*0, 3, 1,
-		1, 3, 2,
-		2, 3, 0,
-		0, 1, 2*/
-	};
-
-	GLfloat vertices[] = {
-		0.0f, 0.0f, 0.0f,
-		0.0f, 1.0f, 0.0f,
-		1.0f, 1.0f, 0.0f,
-		1.0f, 0.0f, 0.0f,
-		1.0f, 0.0f, -1.0f,
-		1.0f, 1.0f, -1.0f,
-		0.0f, 1.0f, -1.0f,
-		0.0f, 0.0f, -1.0f,
-		/*-1.0f, -1.0f, 0.0f,
-		0.0f, -1.0f, 1.0f,
-		1.0f, -1.0f, 0.0f,
-		0.0f, 1.0f, 0.0f*/
-	};
-
-	Mesh *obj1 = new Mesh();
-	obj1->CreateMesh(vertices, indices, 24, 36);
->>>>>>> creo que ya esta
 	meshList.push_back(obj1);
 }
 void Menu::LoadShaders()
